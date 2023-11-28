@@ -1,0 +1,6 @@
+module Pods_reactNativeTaskIm_reactNativeTaskImTests {
+  umbrella header "Pods-reactNativeTaskIm-reactNativeTaskImTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
