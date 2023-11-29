@@ -1,0 +1,9 @@
+.idea
+android
+ios
+ios/Pods
+node_modules
+vendor
+Gemfile.lock
+package-lock.json
+"ios"
