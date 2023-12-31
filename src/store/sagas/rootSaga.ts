@@ -1,8 +1,8 @@
 import { all } from "redux-saga/effects";
-import participantsSaga from "./participants";
+import eventsSaga from "./events";
 
 function* rootSaga() {
-  yield all([participantsSaga()]);
+  yield all([eventsSaga()]);
 }
 
 export default rootSaga;

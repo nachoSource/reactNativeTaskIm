@@ -1,16 +1,15 @@
 // @ts-ignore
-import { API_TOKEN, API_URL } from "@env";
+import { API_URL } from "@env";
 
 class Api {
   apiUrl = API_URL;
-  token = API_TOKEN;
 
   get = async (url: string) => {
     const init: RequestInit = {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${this.token}`,
         "Content-Type": "application/json",
+        "AIC-User-Agent": "Artic API challenge (ignacio5mattos@gmail.com)",
       },
     };
 

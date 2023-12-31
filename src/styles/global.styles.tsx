@@ -1,16 +1,18 @@
 import { StyleSheet } from "react-native";
 
 const colors = {
+  black: "#1A1A1A",
   error: "red",
-  primary: "#380CA4",
-  secondary: "#01EE4F",
+  link: "#3b99fc",
+  primary: "#949494",
+  secondary: "#b50938",
   white: "#f8f9fa",
 };
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    width: "100%",
     height: "100%",
+    width: "100%",
   },
   container: {
     padding: 25,
