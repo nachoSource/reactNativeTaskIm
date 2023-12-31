@@ -40,7 +40,7 @@ const Event = ({ dark = false, item, selectEvent }: EventComponentProps) => {
 };
 
 export default connect(
-  () => {},
+  () => ({}),
   (dispatch) => {
     return {
       selectEvent: (data: EventComponentProps) =>

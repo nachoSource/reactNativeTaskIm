@@ -8,9 +8,9 @@ const Touchable = ({
   children,
   label = "",
   style,
-  onPress = () => {},
+  onTouch = () => {},
 }: TouchableProps): ReactElement => (
-  <TouchableOpacity onPress={onPress} style={[styles.touchable, style]}>
+  <TouchableOpacity onPress={onTouch} style={[styles.touchable, style]}>
     {!!label && <Text style={styles.label}>{label}</Text>}
     {children}
   </TouchableOpacity>

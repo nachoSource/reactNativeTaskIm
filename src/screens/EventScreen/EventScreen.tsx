@@ -1,7 +1,8 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { Image, View } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { connect } from "react-redux";
-import { BackButton, Field, Link } from "../../components";
+import { BackButton, Field, Link, Touchable } from "../../components";
 import { EventScreenProps } from "../../interfaces/screens";
 import BaseLayout from "../BaseLayout";
 import styles from "./EventScreen.styles";
@@ -9,6 +10,46 @@ import styles from "./EventScreen.styles";
 const EventScreen = ({ navigation, event }: EventScreenProps): ReactElement => {
   const { id, date, url, title, imageUrl, description, isFree, location } =
     event;
+  const [isEventFavorite, setIsEventFavorite] = useState<Boolean>(false);
+
+  useEffect(() => {
+    AsyncStorage.getItem("favoriteEvents").then((fe) => {
+      setIsEventFavorite(JSON.parse(fe)?.includes(id));
+    });
+  }, []);
+
+  const handleTouch = async () => {
+    try {
+      if (isEventFavorite) {
+        const favoriteEvents = await AsyncStorage.getItem("favoriteEvents");
+        const filteredEvents = JSON.parse(favoriteEvents).filter(
+          (e) => e !== id
+        );
+        await AsyncStorage.setItem(
+          "favoriteEvents",
+          JSON.stringify(filteredEvents)
+        );
+      } else {
+        const favoriteEvents = await AsyncStorage.getItem("favoriteEvents");
+        let parsedEvents = JSON.parse(favoriteEvents);
+        if (!!parsedEvents) {
+          if (!parsedEvents.find((e) => e === id)) {
+            parsedEvents = [...parsedEvents, id];
+          }
+        } else {
+          parsedEvents = [id];
+        }
+        await AsyncStorage.setItem(
+          "favoriteEvents",
+          JSON.stringify(parsedEvents)
+        );
+      }
+      // TODO improve this to avoid inconsistency
+      setIsEventFavorite(!isEventFavorite);
+    } catch (e) {
+      console.log("Error while updating from AsyncStorage", e);
+    }
+  };
 
   return (
     <BaseLayout>
@@ -27,8 +68,14 @@ const EventScreen = ({ navigation, event }: EventScreenProps): ReactElement => {
           <Field dark value={isFree ? "GRATIS" : "PAGO"} />
           <Field dark label="Ubicación:" value={location} />
 
-          <View style={styles.linkContainer}>
+          <View style={styles.buttonsContainer}>
             <Link url={url} label="+ Info" style={styles.link} />
+            <Touchable
+              label={`${
+                isEventFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"
+              }`}
+              onTouch={handleTouch}
+            />
           </View>
         </View>
       </View>

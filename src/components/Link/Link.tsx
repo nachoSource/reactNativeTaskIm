@@ -13,7 +13,7 @@ const Link = ({ url, label, style }: LinkProps) => {
   }, [url]);
 
   return (
-    <Touchable style={[styles.container, style]} onPress={handlePress}>
+    <Touchable style={[styles.container, style]} onTouch={handlePress}>
       <Text style={styles.url}>{label}</Text>
     </Touchable>
   );

@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from "react";
 import { ActivityIndicator, View } from "react-native";
 import { connect } from "react-redux";
-import { EventsList } from "../../components";
+import { EventsList, FavEventsList } from "../../components";
 import { HomeScreenProps } from "../../interfaces/screens";
 import { FETCH_EVENTS_REQUEST } from "../../store/actions/types";
 import { colors } from "../../styles/global.styles";
@@ -23,6 +23,7 @@ const HomeScreen = ({
     <BaseLayout>
       <View>
         {pending && <ActivityIndicator size="large" color={colors.white} />}
+        <FavEventsList />
         {/*@ts-ignore*/}
         {!pending && <EventsList error={error} data={events} />}
       </View>

@@ -4,9 +4,8 @@ Consider the following:
 
 - For cleaner legibility, better dev-experience and project management, redux-saga has been chosen as the preferred
   variant of this tool for global state handling.
-- Layout and UI design aimed to take after https://matirait.com UI design. However, any improvement about data
-  presentation (specially regarding **Company/Person** schema) is welcome since no example has been found in the
-  mentioned website.
+- Layout and UI design aimed to take after https://www.artic.edu UI design. However, any improvement about data
+  presentation is welcome.
 - For future upgrades, a series of improvements have been signaled with a `TODO` tag.
 
 # Getting Started

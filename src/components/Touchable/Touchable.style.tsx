@@ -4,7 +4,7 @@ import { colors } from "../../styles/global.styles";
 const styles = StyleSheet.create({
   label: {
     color: colors.primary,
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: "bold",
     textTransform: "uppercase",
   },
