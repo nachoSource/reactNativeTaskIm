@@ -1,11 +1,5 @@
-export interface IAction {
-  type: string;
-  payload?: any;
-}
+export const FETCH_EVENTS_REQUEST = "[Events] Fetch events request";
+export const FETCH_EVENTS_SUCCESS = "[Events] Fetch events success";
+export const FETCH_EVENTS_FAILURE = "[Events] Fetch events failure";
 
-export const FETCH_PARTICIPANTS_REQUEST =
-  "[Participants] Fetch participants request";
-export const FETCH_PARTICIPANTS_SUCCESS =
-  "[Participants] Fetch participants success";
-export const FETCH_PARTICIPANTS_FAILURE =
-  "[Participants] Fetch participants failure";
+export const SAVE_CURRENT_EVENT = "[Events] Save current event";

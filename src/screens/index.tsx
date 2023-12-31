@@ -1,4 +1,4 @@
 import HomeScreen from "./Home";
-import ParticipantsScreen from "./Participants";
+import EventScreen from "./EventScreen";
 
-export { HomeScreen, ParticipantsScreen };
+export { HomeScreen, EventScreen };

@@ -1,13 +1,9 @@
-import React, { PropsWithChildren } from "react";
+import React from "react";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { LeftArrow } from "../../../assets";
-import { NavigationProp } from "@react-navigation/core/src/types";
+import { BackButtonProps } from "../../interfaces/components";
 import Text from "../Text";
-
-type BackButtonProps = PropsWithChildren<{
-  navigation: NavigationProp<ReactNavigation.RootParamList>;
-}>;
 
 const BackButton = ({ navigation }: BackButtonProps) => {
   // const navigation = useNavigation();

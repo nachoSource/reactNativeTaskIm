@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import participantsReducer from "./participants";
+import eventsReducer from "./events";
 
 export const combinedReducers = combineReducers({
-  participants: participantsReducer,
+  events: eventsReducer,
 });

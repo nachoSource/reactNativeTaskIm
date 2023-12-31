@@ -1,6 +1,5 @@
 import React, { PropsWithChildren, ReactElement } from "react";
 import { SafeAreaView, StatusBar, useColorScheme } from "react-native";
-import { BackgroundImage } from "../../components";
 import styles from "./BaseLayout.styles";
 
 type BaseLayoutProps = PropsWithChildren<{
@@ -13,7 +12,6 @@ const BaseLayout = ({ children }: BaseLayoutProps): ReactElement => {
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
-      <BackgroundImage />
       {children}
     </SafeAreaView>
   );
