@@ -2,6 +2,13 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../styles/global.styles";
 
 const styles = StyleSheet.create({
+  buttonsContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 15,
+    width: "100%",
+  },
   container: {
     alignItems: "center",
     backgroundColor: colors.white,
@@ -29,12 +36,6 @@ const styles = StyleSheet.create({
   },
   img: { width: "100%", height: 200 },
   link: { width: "25%" },
-  linkContainer: {
-    alignItems: "center",
-    display: "flex",
-    marginTop: 15,
-    width: "100%",
-  },
 });
 
 export default styles;

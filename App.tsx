@@ -6,7 +6,6 @@ import { HomeScreen, EventScreen } from "./src/screens";
 import { store } from "./index";
 
 // TODO add animations
-// TODO add Async Storage
 // TODO create a native module to save information into a calendar
 // TODO adjust styles to match client
 
