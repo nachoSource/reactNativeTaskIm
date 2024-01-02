@@ -1,5 +1,11 @@
 import { EventItemProps } from "../interfaces/events";
 
+const formatDate = (date: Date): String => {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `${hours || "00"}:${minutes || "00"}`;
+};
+
 const parseEventsData = (res: any[]): EventItemProps[] => {
   return res
     .filter(({ id }) => !!id)
@@ -15,9 +21,13 @@ const parseEventsData = (res: any[]): EventItemProps[] => {
         image_url,
         title,
       }) => {
-        // TODO fix this
         let parsedDate = new Date(start_date);
-        parsedDate.setTime(start_time);
+        const [hours, minutes] = start_time.split(":");
+        // TODO review this to avoid messy date parsing
+        parsedDate.setUTCHours(hours * 60 * 60 * 1000);
+        parsedDate.setUTCMinutes(minutes * 60 * 1000);
+        parsedDate.setSeconds(0);
+
         return {
           id: Number(id),
           date: parsedDate,
@@ -32,4 +42,4 @@ const parseEventsData = (res: any[]): EventItemProps[] => {
     );
 };
 
-export { parseEventsData };
+export { formatDate, parseEventsData };

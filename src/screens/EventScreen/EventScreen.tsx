@@ -3,6 +3,7 @@ import { Image, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { connect } from "react-redux";
 import { BackButton, Field, Link, Touchable } from "../../components";
+import { formatDate } from "../../helpers/events";
 import { EventScreenProps } from "../../interfaces/screens";
 import BaseLayout from "../BaseLayout";
 import styles from "./EventScreen.styles";
@@ -10,6 +11,7 @@ import styles from "./EventScreen.styles";
 const EventScreen = ({ navigation, event }: EventScreenProps): ReactElement => {
   const { id, date, url, title, imageUrl, description, isFree, location } =
     event;
+  const formattedDate = formatDate(date);
   const [isEventFavorite, setIsEventFavorite] = useState<Boolean>(false);
 
   useEffect(() => {
@@ -59,7 +61,7 @@ const EventScreen = ({ navigation, event }: EventScreenProps): ReactElement => {
           <Image source={{ uri: imageUrl }} style={styles.img} />
           <View>
             <Field dark numberOfLines={3} value={title} />
-            <Field dark label="Fecha:" value={date} />
+            <Field dark label="Fecha:" value={formattedDate} />
           </View>
         </View>
         <View style={styles.content}>

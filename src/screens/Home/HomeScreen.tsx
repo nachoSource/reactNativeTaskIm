@@ -22,8 +22,8 @@ const HomeScreen = ({
   return (
     <BaseLayout>
       <View>
-        {pending && <ActivityIndicator size="large" color={colors.white} />}
         <FavEventsList />
+        {pending && <ActivityIndicator size="large" color={colors.white} />}
         {/*@ts-ignore*/}
         {!pending && <EventsList error={error} data={events} />}
       </View>

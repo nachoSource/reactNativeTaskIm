@@ -4,6 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import SelectDropdown from "react-native-select-dropdown";
 import { useNavigation } from "@react-navigation/native";
 import { connect } from "react-redux";
+import { formatDate } from "../../helpers/events";
 import { FavEventsListProps } from "../../interfaces/components";
 import { EventComponentProps, EventItemProps } from "../../interfaces/events";
 import { SAVE_CURRENT_EVENT } from "../../store/actions/types";
@@ -37,33 +38,30 @@ const FavEventsList = ({ events = [], selectEvent }: FavEventsListProps) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Eventos guardados</Text>
+      <Text style={styles.title}>Eventos guardados: </Text>
       <SelectDropdown
         buttonTextStyle={styles.buttonText}
         buttonStyle={styles.button}
         selectedRowStyle={styles.selectedOption}
-        defaultButtonText="Eventos guardados"
-        data={filteredEvents}
+        defaultButtonText="Abrir"
+        data={filteredEvents.sort((a, b) => (a.date < b.date ? -1 : 1))}
         search
         onSelect={handleNavigate}
-        buttonTextAfterSelection={(selectedItem) => {
-          return `${selectedItem.id}: ${selectedItem.title}`;
-        }}
-        rowTextForSelection={(item) => {
-          return `${item.id}: ${item.title}`;
-        }}
+        buttonTextAfterSelection={({ date, title }: EventItemProps) =>
+          `${formatDate(date)}: ${title}`
+        }
+        rowTextForSelection={({ date, title }: EventItemProps) =>
+          `${formatDate(date)}: ${title}`
+        }
       />
     </View>
   );
 };
 
 export default connect(
-  (state: any) => {
-    console.log(state.events);
-    return {
-      events: state.events.data,
-    };
-  },
+  (state: any) => ({
+    events: state.events.data,
+  }),
   (dispatch) => {
     return {
       selectEvent: (data: EventComponentProps) =>
