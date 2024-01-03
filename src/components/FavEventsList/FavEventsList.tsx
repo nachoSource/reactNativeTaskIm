@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import SelectDropdown from "react-native-select-dropdown";
 import { useNavigation } from "@react-navigation/native";
 import { connect } from "react-redux";
-import { formatDate } from "../../helpers/events";
+import { getDate } from "../../helpers/events";
 import { FavEventsListProps } from "../../interfaces/components";
 import { EventComponentProps, EventItemProps } from "../../interfaces/events";
 import { SAVE_CURRENT_EVENT } from "../../store/actions/types";
@@ -48,10 +48,10 @@ const FavEventsList = ({ events = [], selectEvent }: FavEventsListProps) => {
         search
         onSelect={handleNavigate}
         buttonTextAfterSelection={({ date, title }: EventItemProps) =>
-          `${formatDate(date)}: ${title}`
+          `${getDate(date)}: ${title}`
         }
         rowTextForSelection={({ date, title }: EventItemProps) =>
-          `${formatDate(date)}: ${title}`
+          `${getDate(date)}: ${title}`
         }
       />
     </View>

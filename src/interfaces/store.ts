@@ -7,7 +7,7 @@ interface IAction {
 
 interface EventsIState {
   currentEvent: EventComponentProps | null;
-  pagination: any | null; // TODO fill this
+  pagination: any | null;
   data: EventComponentProps | [];
   pending: boolean;
   error: any;

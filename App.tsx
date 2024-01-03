@@ -5,13 +5,9 @@ import { Provider } from "react-redux";
 import { HomeScreen, EventScreen } from "./src/screens";
 import { store } from "./index";
 
-// TODO add animations
 // TODO create a native module to save information into a calendar
-// TODO adjust styles to match client
 
 // TODO opt - add push notifications
-// TODO opt - move types to src/interfaces
-// TODO update README
 
 const Stack = createNativeStackNavigator();
 

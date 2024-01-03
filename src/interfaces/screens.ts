@@ -10,6 +10,7 @@ type EventScreenProps = PropsWithChildren<{
 type HomeScreenProps = PropsWithChildren<{
   error: boolean;
   events: EventComponentProps | [];
+  pagination: any | null;
   pending: boolean;
   fetchEvents: Function;
 }>;

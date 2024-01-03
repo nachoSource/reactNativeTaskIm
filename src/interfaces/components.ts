@@ -10,6 +10,8 @@ type BackButtonProps = PropsWithChildren<{
 type EventListProps = PropsWithChildren<{
   data: [any] | [];
   error: boolean;
+  keepSearching: boolean;
+  handleEndReached: Function;
 }>;
 
 type FavEventsListProps = PropsWithChildren<{

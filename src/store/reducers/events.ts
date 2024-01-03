@@ -14,8 +14,6 @@ const eventsReducer = (state = initialState, action: IAction) => {
     case types.FETCH_EVENTS_REQUEST: {
       return {
         ...state,
-        data: null,
-        pagination: null,
         pending: true,
         error: false,
       };

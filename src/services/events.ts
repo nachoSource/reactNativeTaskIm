@@ -1,5 +1,6 @@
 import Api from "../api";
 
-const fetchEvents = async (): Promise<any[]> => await Api.get("/events");
+const fetchEvents = async (page = 0): Promise<any[]> =>
+  await Api.get(`/events?page=${page}`);
 
 export { fetchEvents };
