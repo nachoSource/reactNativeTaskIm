@@ -1,17 +1,22 @@
-This project aims to show a preview of a business' information using React-Native (tsx), Redux & React-Navigation.
+This project aims to work as an API that allows users to access a preview of Art Institute of Chicago events information and schedule/save events.
 
 Consider the following:
 
+- As the main framework, React Native (ts) has been chosen (https://reactnative.dev).
 - For cleaner legibility, better dev-experience and project management, redux-saga has been chosen as the preferred
-  variant of this tool for global state handling.
+  variant of this tool for global state handling (https://redux-saga.js.org).
+- For storage persistence, AsyncStorage is being used (https://www.npmjs.com/package/@react-native-async-storage/async-storage).
+- For better UX, Animated is being used (https://reactnative.dev/docs/animated).
+- For environment variables management, (https://www.npmjs.com/package/react-native-dotenv).
 - Layout and UI design aimed to take after https://www.artic.edu UI design. However, any improvement about data
   presentation is welcome.
 - For future upgrades, a series of improvements have been signaled with a `TODO` tag.
+- In order to meet project deadline, the use of native modules is left to future improvements.
 
 # Getting Started
 
 > **Note**: Make sure you have completed
-> the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new
+> the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup?guide=native) instructions till "Creating a new
 > application" step, before proceeding.
 
 ## Step 1: install dependencies

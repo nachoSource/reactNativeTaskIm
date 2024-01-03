@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     marginTop: 15,
     width: "100%",
   },
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     width: "100%",
   },
+  favTouchable: { height: 40 },
   header: {
     borderBottomColor: colors.primary,
     borderBottomWidth: 1,
@@ -35,7 +36,6 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   img: { width: "100%", height: 200 },
-  link: { width: "25%" },
 });
 
 export default styles;

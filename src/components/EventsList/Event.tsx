@@ -2,7 +2,7 @@ import React from "react";
 import { Image, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { connect } from "react-redux";
-import { formatDate } from "../../helpers/events";
+import { getDate, getTime } from "../../helpers/events";
 import { EventComponentProps } from "../../interfaces/events";
 import { SAVE_CURRENT_EVENT } from "../../store/actions/types";
 import Field from "../Field";
@@ -11,7 +11,8 @@ import styles from "./EventsList.style";
 const Event = ({ dark = false, item, selectEvent }: EventComponentProps) => {
   const navigation = useNavigation();
   const { date, description, imageUrl, isFree, location, title } = item;
-  const formattedDate = formatDate(date);
+  const formattedDate = getDate(date);
+  const time = getTime(date);
 
   const handlePress = () => {
     selectEvent(item);
@@ -31,6 +32,7 @@ const Event = ({ dark = false, item, selectEvent }: EventComponentProps) => {
           <View style={styles.elementTitle}>
             <Field dark={dark} numberOfLines={3} value={title} />
             <Field dark={dark} label="Fecha:" value={formattedDate} />
+            <Field dark={dark} label="Horario:" value={time} />
           </View>
         </View>
         <Field dark={dark} value={description} />

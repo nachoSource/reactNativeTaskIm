@@ -1,9 +1,9 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import { Image, View } from "react-native";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
+import { Animated, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { connect } from "react-redux";
-import { BackButton, Field, Link, Touchable } from "../../components";
-import { formatDate } from "../../helpers/events";
+import { BackButton, Field, Touchable } from "../../components";
+import { getDate, getTime } from "../../helpers/events";
 import { EventScreenProps } from "../../interfaces/screens";
 import BaseLayout from "../BaseLayout";
 import styles from "./EventScreen.styles";
@@ -11,14 +11,26 @@ import styles from "./EventScreen.styles";
 const EventScreen = ({ navigation, event }: EventScreenProps): ReactElement => {
   const { id, date, url, title, imageUrl, description, isFree, location } =
     event;
-  const formattedDate = formatDate(date);
+  const fadeAnim = useRef(new Animated.Value(0)).current;
   const [isEventFavorite, setIsEventFavorite] = useState<Boolean>(false);
+
+  const formattedDate = getDate(date);
+  const time = getTime(date);
 
   useEffect(() => {
     AsyncStorage.getItem("favoriteEvents").then((fe) => {
       setIsEventFavorite(JSON.parse(fe)?.includes(id));
     });
   }, []);
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      delay: 300,
+      toValue: 100,
+      duration: 3500,
+      useNativeDriver: true,
+    }).start();
+  }, [fadeAnim]);
 
   const handleTouch = async () => {
     try {
@@ -58,10 +70,14 @@ const EventScreen = ({ navigation, event }: EventScreenProps): ReactElement => {
       <BackButton navigation={navigation} />
       <View style={styles.container}>
         <View style={styles.header}>
-          <Image source={{ uri: imageUrl }} style={styles.img} />
+          <Animated.Image
+            source={{ uri: imageUrl }}
+            style={{ ...styles.img, opacity: fadeAnim }}
+          />
           <View>
             <Field dark numberOfLines={3} value={title} />
             <Field dark label="Fecha:" value={formattedDate} />
+            <Field dark label="Horario:" value={time} />
           </View>
         </View>
         <View style={styles.content}>
@@ -71,11 +87,11 @@ const EventScreen = ({ navigation, event }: EventScreenProps): ReactElement => {
           <Field dark label="Ubicación:" value={location} />
 
           <View style={styles.buttonsContainer}>
-            <Link url={url} label="+ Info" style={styles.link} />
             <Touchable
               label={`${
                 isEventFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"
               }`}
+              style={styles.favTouchable}
               onTouch={handleTouch}
             />
           </View>

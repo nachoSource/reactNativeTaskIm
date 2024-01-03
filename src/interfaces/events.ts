@@ -21,7 +21,7 @@ type FieldProps = PropsWithChildren<{
   dark?: boolean;
   label?: string;
   numberOfLines?: number;
-  value: string | Number | Date | Boolean;
+  value: String | Number | Date | Boolean;
 }>;
 
 export type { EventComponentProps, EventItemProps, FieldProps };

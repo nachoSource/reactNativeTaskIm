@@ -1,6 +1,12 @@
 import { EventItemProps } from "../interfaces/events";
 
-const formatDate = (date: Date): String => {
+const getDate = (date: Date): String => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  return `${day}/${month}`;
+};
+
+const getTime = (date: Date): String => {
   const hours = date.getHours();
   const minutes = date.getMinutes();
   return `${hours || "00"}:${minutes || "00"}`;
@@ -42,4 +48,4 @@ const parseEventsData = (res: any[]): EventItemProps[] => {
     );
 };
 
-export { formatDate, parseEventsData };
+export { getDate, getTime, parseEventsData };
